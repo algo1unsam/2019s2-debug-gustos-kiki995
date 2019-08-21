@@ -79,6 +79,18 @@ object cuero {
 
 }
 
+/*estado*/
+object natura{
+	method brilla() {return false}	
+	method conduce() {return false}
+	
+	}
+object plomo{
+	method estado (estado){return estado.brilla}
+	
+	method 
+}
+
 /* objetos */
 object remera {
 
