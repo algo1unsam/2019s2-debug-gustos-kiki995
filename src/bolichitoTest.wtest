@@ -87,3 +87,38 @@ test "El bolichito con una remera y una pelota puede ofrecerle algo a Luisa" {
 	
 	assert.notThat(bolichito.puedeOfrecerleAlgoA(luisa))
 }
+
+test "Un bolichito con un banquito en mostrador y una cajita de cobre con una
+	 pelota dentro en vidriera no está desequilibrado y tiene algo naranja"{
+	 	bolichito.ponerEnMostrador(banquito)
+	 	bolichito.ponerEnVidriera(cajita)
+	 	cajita.setObjetoInterno(pelota)
+	 	
+	 	assert.notThat(bolichito.estaDesequilibrado())
+	 	assert.that(bolichito.tieneAlgoDeColor(naranja))
+	 }
+	 
+test "Un bolichito con un banquito en mostrador y una cajita de cobre con una
+	 arito  dentro en vidriera  está equilibrado"{
+	 	bolichito.ponerEnMostrador(banquito)
+	 	bolichito.ponerEnVidriera(cajita)
+	 	cajita.setObjetoInterno(arito)
+	 	
+	 	assert.that(bolichito.estaDesequilibrado())
+	 	
+	 }
+	 
+test "Un bolichito con un banquito verde en mostrador y una cajita de cobre con una
+	 arito  dentro en vidriera  está equilibrado"{
+	 	bolichito.ponerEnMostrador(banquito)
+	 	banquito.setColor(verde)
+	 	bolichito.ponerEnVidriera(cajita)
+	 	cajita.setmaterial(cobre)
+	 	cajita.setObjetoInterno(arito)
+	 	
+	 	
+	 	assert.notThat(bolichito.tieneAlgoDeColor(naranja))
+	 }
+
+/*hacer un test que una cajita de cobre con un munieco que pesa 100 dentro primero pesa 500 
+si cambio el peso del muñeco a 400 entonces deberia pesar 800*/
