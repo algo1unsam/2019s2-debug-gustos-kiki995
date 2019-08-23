@@ -119,6 +119,43 @@ test "Un bolichito con un banquito verde en mostrador y una cajita de cobre con 
 	 	
 	 	assert.notThat(bolichito.tieneAlgoDeColor(naranja))
 	 }
+	 
+test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plomo con un
+	 arito dentro es brillante pero no tiene luz."{
+	 	munieco.setPeso(500)
+	 	bolichito.ponerEnMostrador(munieco)
+	 	bolichito.ponerEnVidriera(cajita)
+	 	cajita.setmaterial(plomo)
+	 	cajita.setObjetoInterno(arito)
+	 	
+	 	assert.notThat(bolichito.esTieneLuz())
+	 	assert.that(bolichito.esBrillante())
+	 }
+	 
+	 test "La misma situación pero con una cajita de plomo cromado, entonces el bolichito
+ es brillante y tiene luz."{
+	 	munieco.setPeso(500)
+	 	bolichito.ponerEnMostrador(munieco)
+	 	bolichito.ponerEnVidriera(cajita)
+	 	plomo.setEstado(cromado)
+	 	cajita.setmaterial(plomo)
+	 	cajita.setObjetoInterno(arito)
+	 	
+	 	assert.that(bolichito.esTieneLuz())
+	 	assert.that(bolichito.esBrillante())
+	 }
+	 
+ test "La misma situación pero con una cajita de plomo oxidado, entonces el bolichito
+ no es brillante ni tiene luz."{
+	 	munieco.setPeso(500)
+	 	bolichito.ponerEnMostrador(munieco)
+	 	bolichito.ponerEnVidriera(cajita)
+	 	plomo.setEstado(oxcidado)
+	 	cajita.setmaterial(plomo)
+	 	cajita.setObjetoInterno(arito)
+	 	
+	 	assert.notThat(bolichito.esTieneLuz())
+	 	assert.notThat(bolichito.esBrillante())
+	 }
+	 
 
-/*hacer un test que una cajita de cobre con un munieco que pesa 100 dentro primero pesa 500 
-si cambio el peso del muñeco a 400 entonces deberia pesar 800*/

@@ -45,12 +45,20 @@ object cobre {
 		return true
 	}
 
+	method conduce() {
+		return true
+	}
+
 }
 
 object vidrio {
 
 	method brilla() {
 		return true
+	}
+
+	method conduce() {
+		return false
 	}
 
 }
@@ -69,6 +77,10 @@ object madera {
 		return false
 	}
 
+	method conduce() {
+		return false
+	}
+
 }
 
 object cuero {
@@ -77,18 +89,65 @@ object cuero {
 		return false
 	}
 
+	method conduce() {
+		return false
+	}
+
 }
 
-/*estado*/
-object natura{
-	method brilla() {return false}	
-	method conduce() {return false}
-	
+object plomo {
+
+	var estado =natural
+
+	method brilla() {
+		return estado.brilla()
 	}
-object plomo{
-	method estado (estado){return estado.brilla}
-	
-	method 
+
+	method conduce(){
+		return estado.conduce()
+	}
+
+	method setEstado(tipo) {
+		estado = tipo
+	}
+
+}
+
+/*estado del plomo*/
+object natural {
+
+	method brilla() {
+		return true
+	}
+
+	method conduce() {
+		return false
+	}
+
+}
+
+object cromado {
+
+	method brilla() {
+		return true
+	}
+
+	method conduce() {
+		return true
+	}
+
+}
+
+object oxcidado {
+
+	method brilla() {
+		return false
+	}
+
+	method conduce() {
+		return false
+	}
+
 }
 
 /* objetos */
@@ -206,8 +265,9 @@ object arito {
 }
 
 object banquito {
-	 var _color = naranja
-	
+
+	var _color = naranja
+
 	method material() {
 		return madera
 	}
@@ -221,27 +281,34 @@ object banquito {
 	}
 
 	method setColor(color) {
-		  _color=color
+		_color = color
 	}
 
 }
 
 object cajita {
-	
-	var setPesoInterno=0
 
-	method setmaterial(material) {
-		return material
+	var setPesoInterno = 0
+	var material
+
+	method setmaterial(tipo) {
+		 material=tipo
 	}
 
 	method peso() {
-		return (400+setPesoInterno)
+		return (400 + setPesoInterno)
 	}
 
 	method color() {
 		return rojo
 	}
-	method setObjetoInterno(objecto){setPesoInterno=objecto.peso()}
+
+	method setObjetoInterno(objecto) {
+		setPesoInterno = objecto.peso()
+	}
+	method material() {
+		return material
+}
 
 }
 
