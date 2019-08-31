@@ -158,4 +158,7 @@ test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plo
 	 	assert.notThat(bolichito.esBrillante())
 	 }
 	 
-
+/* falto test para probar pre post cálculo explicado en clase
+ "Hacer un test que pruebe una cajita de cobre con un muñeco que pesa 100,
+   entonces las caja pesa 500, si cambio el peso del muñeco a 400 entonces el peso total de la caja debería ser 800"
+*/
