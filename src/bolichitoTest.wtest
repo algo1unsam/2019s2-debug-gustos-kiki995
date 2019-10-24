@@ -18,8 +18,8 @@ test "El bolichito no es brillante si tiene una pelota y una placa" {
 
 test "El bolichito es monocromático si tiene una remera y una placa roja" {
 	bolichito.ponerEnMostrador(remera)
-	placa.setColor(rojo)
 	bolichito.ponerEnVidriera(placa)
+	placa.setColor(rojo)
 	
 	assert.that(bolichito.esMonocromatico())
 }
@@ -53,6 +53,7 @@ test "El bolichito puede mejorar si tiene una pelota en el mostrador y una remer
 }
 
 test "El bolichito puede mejorar si tiene una remera y una placa roja" {
+	
 	placa.setColor(rojo)
 	bolichito.ponerEnMostrador(remera)
 	bolichito.ponerEnVidriera(placa)
@@ -88,77 +89,70 @@ test "El bolichito con una remera y una pelota puede ofrecerle algo a Luisa" {
 	assert.notThat(bolichito.puedeOfrecerleAlgoA(luisa))
 }
 
-test "Un bolichito con un banquito en mostrador y una cajita de cobre con una
-	 pelota dentro en vidriera no está desequilibrado y tiene algo naranja"{
-	 	bolichito.ponerEnMostrador(banquito)
-	 	bolichito.ponerEnVidriera(cajita)
-	 	cajita.setObjetoInterno(pelota)
-	 	
-	 	assert.notThat(bolichito.estaDesequilibrado())
-	 	assert.that(bolichito.tieneAlgoDeColor(naranja))
-	 }
-	 
-test "Un bolichito con un banquito en mostrador y una cajita de cobre con una
-	 arito  dentro en vidriera  está equilibrado"{
-	 	bolichito.ponerEnMostrador(banquito)
-	 	bolichito.ponerEnVidriera(cajita)
-	 	cajita.setObjetoInterno(arito)
-	 	
-	 	assert.that(bolichito.estaDesequilibrado())
-	 	
-	 }
-	 
-test "Un bolichito con un banquito verde en mostrador y una cajita de cobre con una
-	 arito  dentro en vidriera  está equilibrado"{
-	 	bolichito.ponerEnMostrador(banquito)
-	 	banquito.setColor(verde)
-	 	bolichito.ponerEnVidriera(cajita)
-	 	cajita.setmaterial(cobre)
-	 	cajita.setObjetoInterno(arito)
-	 	
-	 	
-	 	assert.notThat(bolichito.tieneAlgoDeColor(naranja))
-	 }
-	 
-test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plomo con un
-	 arito dentro es brillante pero no tiene luz."{
-	 	munieco.setPeso(500)
-	 	bolichito.ponerEnMostrador(munieco)
-	 	bolichito.ponerEnVidriera(cajita)
-	 	cajita.setmaterial(plomo)
-	 	cajita.setObjetoInterno(arito)
-	 	
-	 	assert.notThat(bolichito.esTieneLuz())
-	 	assert.that(bolichito.esBrillante())
-	 }
-	 
-	 test "La misma situación pero con una cajita de plomo cromado, entonces el bolichito
- es brillante y tiene luz."{
-	 	munieco.setPeso(500)
-	 	bolichito.ponerEnMostrador(munieco)
-	 	bolichito.ponerEnVidriera(cajita)
-	 	plomo.setEstado(cromado)
-	 	cajita.setmaterial(plomo)
-	 	cajita.setObjetoInterno(arito)
-	 	
-	 	assert.that(bolichito.esTieneLuz())
-	 	assert.that(bolichito.esBrillante())
-	 }
-	 
- test "La misma situación pero con una cajita de plomo oxidado, entonces el bolichito
- no es brillante ni tiene luz."{
-	 	munieco.setPeso(500)
-	 	bolichito.ponerEnMostrador(munieco)
-	 	bolichito.ponerEnVidriera(cajita)
-	 	plomo.setEstado(oxcidado)
-	 	cajita.setmaterial(plomo)
-	 	cajita.setObjetoInterno(arito)
-	 	
-	 	assert.notThat(bolichito.esTieneLuz())
-	 	assert.notThat(bolichito.esBrillante())
-	 }
-	 
-/* falto test para probar pre post cálculo explicado en clase
- "Hacer un test que pruebe una cajita de cobre con un muñeco que pesa 100,
-   entonces las caja pesa 500, si cambio el peso del muñeco a 400 entonces el peso total de la caja debería ser 800"
-*/
+test "Un bolichito con un banquito en mostrador y una cajita de cobre con una pelota dentro en vidriera no está desequilibrado y tiene algo naranja."{
+	cajita.setMaterial(cobre)
+	cajita.objetoInt(pelota)
+	bolichito.ponerEnMostrador(banquito)
+	bolichito.ponerEnVidriera(cajita)
+	
+	assert.notThat(bolichito.estaDesequilibrado())
+	assert.that(bolichito.tieneAlgoDeColor(naranja))
+}
+
+test "Un bolichito con un banquito en mostrador y una cajita de cobre con una arito dentro en vidriera no está desequilibrado y tiene algo naranja."{
+	cajita.setMaterial(cobre)
+	cajita.objetoInt(arito)
+	bolichito.ponerEnMostrador(banquito)
+	bolichito.ponerEnVidriera(cajita)
+	
+	assert.that(bolichito.estaDesequilibrado())
+	assert.that(bolichito.tieneAlgoDeColor(naranja))
+}
+
+test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plomo con un arito dentro es brillante pero no tiene luz."{
+	munieco.setPeso(500)
+	cajita.setMaterial(plomo)
+	cajita.objetoInt(arito)
+	bolichito.ponerEnMostrador(munieco)
+	bolichito.ponerEnVidriera(cajita)
+	
+	assert.that(bolichito.esBrillante())
+	assert.notThat(bolichito.seHizoLaLuz())
+}
+
+test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plomo cromado con un arito dentro es brillante pero no tiene luz."{
+	munieco.setPeso(500)
+	cajita.setMaterial(plomo)
+	cajita.objetoInt(arito)
+	plomo.estado(cromado)
+	bolichito.ponerEnMostrador(munieco)
+	bolichito.ponerEnVidriera(cajita)
+	
+	assert.that(bolichito.esBrillante())
+	assert.that(bolichito.seHizoLaLuz())
+}
+
+test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plomo oxidado con un arito dentro es brillante pero no tiene luz."{
+	munieco.setPeso(500)
+	cajita.setMaterial(plomo)
+	cajita.objetoInt(arito)
+	plomo.estado(oxidado)
+	bolichito.ponerEnMostrador(munieco)
+	bolichito.ponerEnVidriera(cajita)
+	
+	assert.notThat(bolichito.esBrillante())
+	assert.notThat(bolichito.seHizoLaLuz())
+}
+
+test "Hacer un test que pruebe una cajita de cobre con un muñeco que pesa 100 dentro,
+   primero pesa 500, si cambio el peso del muñeco a 400 entonces el peso total debería ser 800"{
+   	munieco.setPeso(100)
+   	cajita.setMaterial(cobre)
+   	cajita.objetoInt(munieco)
+   	
+   	assert.that(cajita.peso()==500) // Se puede usar el equasl tambien assert.equals(500, cajita.peso())
+   	
+   	munieco.setPeso(400)
+   	
+   	assert.that(cajita.peso()==800) // idem comentario anterior
+   }
